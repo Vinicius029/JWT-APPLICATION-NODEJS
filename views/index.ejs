@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .container {
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .container>form>button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <% if (error) { %>
+        <div class="container alert alert-danger" style="color: rgb(255, 17, 0); text-align: center;font-size: 22px;"
+            role="alert" id="errorAlert">
+            <p>
+                <%= error %>
+            </p>
+        </div>
+        <% } %>
+
+        <div class="container bg-info-subtle">
+            <h1>Login</h1>
+            <form action="/login" method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-success">Entrar</button>
+            </form>
+        </div>
+        <script>
+            if(document.getElementById('errorAlert')){
+                setTimeout(() => {
+                    document.getElementById('errorAlert').remove()
+                }, 15000)
+            }
+        </script>
+</body>
+</div>
+
+</html>

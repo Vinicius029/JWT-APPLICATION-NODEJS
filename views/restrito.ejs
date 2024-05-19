@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bem-vindo à <%= user.username %></h1>
+    <button id="logoutButton">Sair</button>
+</body>
+<script>
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        fetch('/logout', {
+            method: 'POST',
+            credentials: 'include', // Necessário para incluir o cookie na requisição
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Você saiu com sucesso!');
+                window.location.href = '/'; // Redireciona para a página inicial ou de login
+            } else {
+                alert('Falha ao sair.');
+            }
+        })
+        .catch(error => console.error('Erro ao sair:', error));
+    });
+    </script>
+</html>
